@@ -13,6 +13,11 @@
 
 Auth::routes();
 
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//todo and task
+Route::get('/todo', 'TaskController@index');
 Route::get('/', 'TodoController@getTodos');
 
 Route::resource('todos','TodoController');
