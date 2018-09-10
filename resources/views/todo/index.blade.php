@@ -6,7 +6,7 @@
 
 @foreach($task as $ding)
 
-{{ $ding->content }} {{ $ding-todo }}
+{{ $ding->content }} {{ $ding->todo }}
 
 @endforeach
 

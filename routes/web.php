@@ -20,4 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //todo and task
-Route::get('/todo', 'TaskController@showAll');
+Route::get('/todo', 'TaskController@index');
