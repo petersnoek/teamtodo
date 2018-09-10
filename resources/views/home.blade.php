@@ -14,9 +14,14 @@
                         </div>
                     @endif
 
-                        <p>
-                            You are logged in {{ Auth::user()->name }}!
-                        </p>
+                    @foreach($todos as $todo)
+                        <div class="todo-main">
+                            <div class="todo-header">{{ $todo->name }}</div>
+                            <div class="todo-body">
+                                (hier komen de tasks)
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
