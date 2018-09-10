@@ -13,15 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    @foreach($todos as $todo)
-                        <div class="todo-main">
-                            <div class="todo-header">{{ $todo->name }}</div>
-                            <div class="todo-body">
-                                (hier komen de tasks)
-                            </div>
-                        </div>
-                    @endforeach
+                    <a href="/user/changePassword">Change password</a>
                 </div>
             </div>
         </div>
