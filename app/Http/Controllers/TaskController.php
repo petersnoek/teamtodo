@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +19,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $task = Task::all();
+        $tasks = Task::all();
         return view(
             'todo.index',
-            compact('task')
+            compact('tasks')
         );
     }
 
@@ -28,7 +33,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('todo.show');
     }
 
     /**
@@ -39,7 +44,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create([
+            'content' => request('content'),
+            'todo' => request('todo_id'),
+        ]);
+        return back();
     }
 
     /**

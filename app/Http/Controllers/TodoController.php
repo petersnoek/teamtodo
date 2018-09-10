@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\models\Todo;
+use App\Todo;
 
 class TodoController extends Controller
 {
@@ -19,13 +19,10 @@ class TodoController extends Controller
      */
     public function index()
     {
-        
-    }
-
-    public function getTodos()
-    {
-    	$todos = DB::select('select * from todos', array(1));
-    	return view('home', ['todos'=>$todos]);
+        $todos = Todo::all();
+        return view(
+            'todo.index',
+            compact('todos'));
     }
 
     /**
@@ -35,7 +32,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('todo.create');
     }
 
     /**
@@ -46,9 +43,9 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $todo = new \App\models\Todo;
-        $todo->name = $request->get('name');
-        $todo->user_id = $request->get('user_id');
+        $todo = new Todo();
+            $todo->name = $request->get('name');
+            $todo->user_id = $request->get('user_id');
         $todo->save();
         
         return redirect('/')->with('success', 'Todo list has been made.');
@@ -60,9 +57,9 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Todo $todo)
     {
-        //
+        return view('todo.show', compact('todo'));
     }
 
     /**
@@ -96,6 +93,8 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
+        return back();
     }
 }

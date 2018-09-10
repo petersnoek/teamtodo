@@ -17,7 +17,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //todo and task
-Route::get('/todo', 'TaskController@index');
-Route::get('/', 'TodoController@getTodos');
+Route::get('/todos', 'TaskController@index');
+Route::get('/', 'TodoController@index');
 
-Route::resource('todos','TodoController');
+//create todolist
+Route::get('/create/todo', 'TodoController@create');
+Route::post('/store/todo', 'TodoController@store');
+Route::get('delete/{id}', 'TodoController@destroy');
+
+Route::get('/todo/{todo}', 'TodoController@show');
+
+Route::post('/store/todo/task', 'TaskController@store');
