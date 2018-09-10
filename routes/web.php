@@ -14,5 +14,10 @@
 Auth::routes();
 
 Route::get('/', 'TodoController@getTodos');
+Route::get('/home', 'TodoController@getTodos');
+
+Route::get('/user', 'UserController@showProfile');
+Route::get('/user/changePassword', 'UserController@showChangePasswordForm');
+Route::post('/user/changePassword','UserController@changePassword')->name('user/changePassword');
 
 Route::resource('todos','TodoController');
