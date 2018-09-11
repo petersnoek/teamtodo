@@ -46,7 +46,7 @@ class TaskController extends Controller
     {
         Task::create([
             'content' => request('content'),
-            'todo' => request('todo_id'),
+            'todo_id' => request('todo_id'),
         ]);
         return back();
     }

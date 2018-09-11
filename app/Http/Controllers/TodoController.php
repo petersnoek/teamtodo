@@ -59,7 +59,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-        return view('todo.show', compact('todo'));
+        return view('todo.show', compact('todo', 'tasks'));
     }
 
     /**
@@ -93,7 +93,9 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
+        $todo = Todo::find($id);
 
+        $todo->delete();
 
         return back();
     }

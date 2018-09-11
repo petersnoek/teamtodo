@@ -5,7 +5,11 @@
 
 <h1>{{ $todo->name }}</h1>
 
+<p>Hier komen alle tasks</p>
 
+@foreach($todo->tasks as $task)
+    {{ $task->content }}
+@endforeach
 
 <hr>
 

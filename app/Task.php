@@ -8,9 +8,8 @@ class Task extends Model
 {
     protected $fillable = ['content', 'todo'];
 
-    public function todo()
+    public function todos()
     {
-        //$to
         return $this->belongsTo(Todo::class);
     }
 }
