@@ -45,7 +45,39 @@ class UserController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
  
-        return redirect()->back()->with("success","Password changed successfully !");
+        return redirect()->back()->with("success","Password changed successfully!");
+ 
+    }
+
+
+    public function showChangeEmailForm()
+    {
+    	return view('auth.changeemail');
+    }
+
+    public function changeEmail(Request $request){
+ 
+        $user = Auth::user();
+
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+        }
+ 
+        if(strcmp( $user->email, $request->get('new-email') ) == 0){
+            //Current email and new email are same
+            return redirect()->back()->with("error","New Email cannot be same as your current email. Please choose a different email.");
+        }
+ 
+        $validatedData = $request->validate([
+            'new-email' => 'required|string|confirmed',
+        ]);
+ 
+        //Change Email
+        $user->email = $request->get('new-email');
+        $user->save();
+ 
+        return redirect()->back()->with("success","Email changed successfully!");
  
     }
 }

@@ -19,5 +19,7 @@ Route::get('/home', 'TodoController@getTodos');
 Route::get('/user', 'UserController@showProfile');
 Route::get('/user/changePassword', 'UserController@showChangePasswordForm');
 Route::post('/user/changePassword','UserController@changePassword')->name('user/changePassword');
+Route::get('/user/changeEmail', 'UserController@showChangeEmailForm');
+Route::post('/user/changeEmail','UserController@changeEmail')->name('user/changeEmail');
 
 Route::resource('todos','TodoController');
