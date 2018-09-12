@@ -14,6 +14,7 @@
                         </div>
                     @endif
                     <a href="/user/changePassword">Change password</a>
+                    <a href="/user/changeEmail">Change email</a>
                 </div>
             </div>
         </div>
