@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\models\Todo;
+use App\Todo;
 
 class TodoController extends Controller
 {
