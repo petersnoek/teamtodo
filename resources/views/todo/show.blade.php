@@ -5,11 +5,17 @@
 
 <h1>{{ $todo->name }}</h1>
 
-<p>Hier komen alle tasks</p>
 
-@foreach($todo->tasks as $task)
-    {{ $task->content }}
-@endforeach
+<ul>
+    @foreach($todo->tasks as $task)
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+    <a href="/task/{{$task->id}}">{{ $task->content }}</a><a href="/delete/task/{{$task->id}}"class="float-right">x</a>
+                </div>
+            </div>
+        </div>@endforeach
+</ul>
 
 <hr>
 

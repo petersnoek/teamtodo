@@ -17,7 +17,6 @@ class CreateTodosTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('user_id');
-            $table->foreign('todo_id')->references('id')->on('tasks');
             $table->timestamps();
         });
     }
