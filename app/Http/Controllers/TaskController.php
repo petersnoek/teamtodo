@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Todo;
 
-class TodoController extends Controller
+class TaskController extends Controller
 {
-	public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,10 +19,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
-        return view(
-            'todo.index',
-            compact('todos'));
+
     }
 
     /**
@@ -32,7 +29,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('todo.create');
+        return view('todo.show');
     }
 
     /**
@@ -43,32 +40,31 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $todo = new Todo();
-            $todo->name = $request->get('name');
-            $todo->user_id = $request->get('user_id');
-        $todo->save();
-        
-        return redirect('/')->with('success', 'Todo list has been made.');
+        Task::create([
+            'content' => request('content'),
+            'todo_id' => request('todo_id'),
+        ]);
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Todo $todo)
+    public function show(Task $task)
     {
-        return view('todo.show', compact('todo'));
+        return view('task.show', compact('task'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Task $task)
     {
         //
     }
@@ -77,26 +73,27 @@ class TodoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
-        //
+        $update = Task::find($request->get('id'));
+        $update->content = $request->get('content');
+        $update->save();
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $todo = Todo::find($id);
-
-        $todo->delete();
-
+        $task = Task::find($id);
+        $task->delete();
         return back();
     }
 }
