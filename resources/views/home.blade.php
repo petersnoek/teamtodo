@@ -14,14 +14,6 @@
                         </div>
                     @endif
 
-                    @foreach($todos as $todo)
-                        <div class="todo-main">
-                            <div class="todo-header">{{ $todo->name }}</div>
-                            <div class="todo-body">
-                                (hier komen de tasks)
-                            </div>
-                        </div>
-                    @endforeach
                 </div>
             </div>
         </div>
