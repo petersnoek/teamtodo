@@ -17,6 +17,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+//todo and task
+Route::get('/todo', 'TaskController@index');
+Route::get('/', 'TodoController@getTodos');
+Route::get('/home', 'TodoController@getTodos');
+
+Route::get('/user', 'UserController@showProfile');
+Route::get('/user/changePassword', 'UserController@showChangePasswordForm');
+Route::post('/user/changePassword','UserController@changePassword')->name('user/changePassword');
+Route::get('/user/changeEmail', 'UserController@showChangeEmailForm');
+Route::post('/user/changeEmail','UserController@changeEmail')->name('user/changeEmail');
+
 //create delete and show todolist
 Route::get('/', 'TodoController@index');
 Route::get('/create/todo', 'TodoController@create');
