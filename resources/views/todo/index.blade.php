@@ -16,6 +16,7 @@
     </div>
 @endforeach
 
+    {{--{{ $todos->links() }}--}}
     <a href="/create/todo">create new todo list</a>
 
 @endsection

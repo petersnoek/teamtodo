@@ -6,6 +6,8 @@
 <h1>{{ $todo->name }}</h1>
 
 
+
+
 <ul>
     @foreach($todo->tasks as $task)
         <div class="col-sm-4">
