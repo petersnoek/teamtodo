@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Todo;
+use App\User;
 
 class TodoController extends Controller
 {
@@ -33,6 +34,17 @@ class TodoController extends Controller
     public function create()
     {
         return view('todo.create');
+    }
+
+    public function storeTodoUser(Request $request)
+    {
+        // $todoUser = new TodoUser();
+            $user_name = $request->get('name');
+            $todoUser->user_id = User::find($user_name)->id;
+            $todoUser->todo_id = $request->get('todo_id');
+        // $todoUser->save();
+        
+        return redirect('/')->with('success', 'Todo list has been made.');
     }
 
     /**
