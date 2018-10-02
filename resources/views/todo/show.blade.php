@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1>{{ $todo->name }}</h1>
+<h1 id="title">{{ $todo->name }}</h1>
 
 
 
@@ -43,5 +43,7 @@
         </div>
     </div>
 </div>
+
+
 @endsection
 
