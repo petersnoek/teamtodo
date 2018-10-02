@@ -2,8 +2,11 @@
 
 
 @section('content')
-
-<h1 id="title">{{ $todo->name }}</h1>
+    <div class="form-group row">
+        <div class="col-xs-2">
+            <h1 id="title">{{ $todo->name }} <img src="/imgs/pencil.png" alt=""></h1>
+        </div>
+    </div>
 
 
 
