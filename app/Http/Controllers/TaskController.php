@@ -81,7 +81,7 @@ class TaskController extends Controller
         $update = Task::find($request->get('id'));
         $update->content = $request->get('content');
         $update->save();
-        return redirect('/todo');
+        return back();
     }
 
     /**
