@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Todo;
+use App\TodoUser;
+use App\User;
 
 class TodoController extends Controller
 {
-	public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -33,6 +35,21 @@ class TodoController extends Controller
     public function create()
     {
         return view('todo.create');
+    }
+
+    public function storeTodoUser(Request $request)
+    {
+        $user = User::where('name', '=', $request->get('user'))->first();
+        if ($user === null) {
+            $todoUser = new TodoUser();
+                $user_name = $request->get('user');
+                $todoUser->user_id = User::where('name', $user_name)->first()->id;
+                $todoUser->todo_id = $request->get('todo_id');
+            $todoUser->save();
+            
+            return redirect('/')->with('success', 'User has been added.');
+        }
+        return redirect('/todo/'.$request->get('todo_id'))->with('error', 'User has already been added to this list.');
     }
 
     /**

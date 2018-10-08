@@ -14,13 +14,6 @@
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-//todo and task
-Route::get('/todo', 'TaskController@index');
-Route::get('/', 'TodoController@getTodos');
-Route::get('/home', 'TodoController@getTodos');
 
 Route::get('/user', 'UserController@showProfile');
 Route::get('/user/changePassword', 'UserController@showChangePasswordForm');
@@ -32,6 +25,7 @@ Route::post('/user/changeEmail','UserController@changeEmail')->name('user/change
 Route::get('/', 'TodoController@index');
 Route::get('/create/todo', 'TodoController@create');
 Route::post('/store/todo', 'TodoController@store');
+Route::post('/store/todoUser', 'TodoController@storeTodoUser');
 Route::get('delete/{id}', 'TodoController@destroy');
 Route::get('/todo/{todo}', 'TodoController@show');
 
