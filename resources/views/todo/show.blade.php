@@ -24,6 +24,7 @@
         <div class="card">
             <div class="card-header"><p style="margin: 7px 0;float: left;">Add user</p>
                 <form style="float: right;" method="post" action="{{url('store/todoUser')}}">
+                <form style="float: right;" method="post" action="{{url('store/todo/addUser')}}">
                     @csrf
                     <input hidden type="text" name="todo_id" value="{{ $todo->id }}">
                     <input style="width: 200px;display: inline-block;" type="text" class="form-control" name="user" placeholder="Add user...">

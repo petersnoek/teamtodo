@@ -50,6 +50,13 @@ class TodoController extends Controller
             return redirect('/')->with('success', 'User has been added.');
         }
         return redirect('/todo/'.$request->get('todo_id'))->with('error', 'User has already been added to this list.');
+        // $todoUser = new TodoUser();
+            $user_name = $request->get('name');
+            $todoUser->user_id = User::find($user_name)->id;
+            $todoUser->todo_id = $request->get('todo_id');
+        // $todoUser->save();
+        
+        return redirect('/')->with('success', 'Todo list has been made.');
     }
 
     /**
