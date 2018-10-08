@@ -23,6 +23,9 @@ class TodoController extends Controller
         return view(
             'todo.index',
             compact('todos'));
+
+//        $todos = Todo::orderBy('name', 'desc')->paginate(5);
+//        return view('todo.index')->with('todos', $todos);
     }
 
     /**
@@ -70,7 +73,7 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -82,7 +85,7 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

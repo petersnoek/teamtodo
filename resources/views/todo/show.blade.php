@@ -2,8 +2,13 @@
 
 
 @section('content')
+    <div class="form-group row">
+        <div class="col-xs-2" id="foto">
+            <h1 for="inputdefault" id="title">{{ $todo->name }} <img src="/imgs/pencil.png" alt="pencil" style="cursor: pointer;"></h1>
+        </div>
+    </div>
 
-<h1>{{ $todo->name }}</h1>
+
 
 
 <ul>
@@ -11,10 +16,11 @@
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">
-    <a href="/task/{{$task->id}}">{{ $task->content }}</a><a href="/delete/task/{{$task->id}}"class="float-right">x</a>
+                    <a href="/task/{{$task->id}}">{{ $task->content }}</a><a href="/delete/task/{{$task->id}}" onclick="return confirm('Are you sure to delete?')" class="float-right">x</a>
                 </div>
             </div>
-        </div>@endforeach
+        </div>
+    @endforeach
 </ul>
 
 <hr>
@@ -41,4 +47,7 @@
         </div>
     </div>
 </div>
+
+
 @endsection
+
