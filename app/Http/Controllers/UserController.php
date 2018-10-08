@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,8 @@ class UserController extends Controller
     	return view('auth.changepassword');
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request)
+    {
  
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
@@ -55,7 +57,8 @@ class UserController extends Controller
     	return view('auth.changeemail');
     }
 
-    public function changeEmail(Request $request){
+    public function changeEmail(Request $request)
+    {
  
         $user = Auth::user();
 
@@ -79,5 +82,11 @@ class UserController extends Controller
  
         return redirect()->back()->with("success","Email changed successfully!");
  
+    }
+
+    public function getAll()
+    {
+        $users = User::all();
+        return view('auth.allusers', compact('users'));
     }
 }

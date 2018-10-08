@@ -26,6 +26,7 @@ Route::get('/user/changePassword', 'UserController@showChangePasswordForm');
 Route::post('/user/changePassword','UserController@changePassword')->name('user/changePassword');
 Route::get('/user/changeEmail', 'UserController@showChangeEmailForm');
 Route::post('/user/changeEmail','UserController@changeEmail')->name('user/changeEmail');
+Route::get('/users', 'UserController@getAll')->name('allUsers');
 
 //create delete and show todolist
 Route::get('/', 'TodoController@index');
