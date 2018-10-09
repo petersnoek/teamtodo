@@ -19,6 +19,10 @@ class CreateTodosTable extends Migration
             $table->integer('user_id');
             $table->timestamps();
         });
+
+        Schema::table('todos', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**

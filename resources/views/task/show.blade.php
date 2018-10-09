@@ -17,7 +17,9 @@
             <div class="card-body">
                 <form method="post" action="{{url('update/task')}}">
                     @csrf
+
                     <input hidden type="text" name="id" value="{{ $task->id }}">
+                    <input hidden type="text" name="todo" value="{{ $task->todo_id }}">
 
                     <div class="form-group col-md-4">
                         <label for="Name">Edit task</label>

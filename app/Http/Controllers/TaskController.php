@@ -78,10 +78,11 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+        $id = $request->get('todo');
         $update = Task::find($request->get('id'));
         $update->content = $request->get('content');
         $update->save();
-        return back();
+        return redirect('/todo/' . $id);
     }
 
     /**

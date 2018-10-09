@@ -14,12 +14,14 @@
 Auth::routes();
 
 
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user', 'UserController@showProfile');
 Route::get('/user/changePassword', 'UserController@showChangePasswordForm');
 Route::post('/user/changePassword','UserController@changePassword')->name('user/changePassword');
 Route::get('/user/changeEmail', 'UserController@showChangeEmailForm');
 Route::post('/user/changeEmail','UserController@changeEmail')->name('user/changeEmail');
+Route::get('/users', 'UserController@getAll')->name('allUsers');
 
 //create delete and show todolist
 Route::get('/', 'TodoController@index');
@@ -28,6 +30,8 @@ Route::post('/store/todo', 'TodoController@store');
 Route::post('/store/todoUser', 'TodoController@storeTodoUser');
 Route::get('delete/{id}', 'TodoController@destroy');
 Route::get('/todo/{todo}', 'TodoController@show');
+Route::get('/edit/todo/{todo}', 'TodoController@edit');
+Route::get('/update/todo', 'TodoController@update');
 
 
 //Store delete and update show tasks
