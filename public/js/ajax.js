@@ -1,7 +1,7 @@
 
 $( document ).ready(function() {
     var myHtml = $('#title')[0].outerHTML;
-    $( "#title" ).click(function() {
+    $( "#foto" ).on('click', '#title', function() {
         var name = $(this).text();
         var id = $("#title").attr('data-id');
         console.log(id, name);
