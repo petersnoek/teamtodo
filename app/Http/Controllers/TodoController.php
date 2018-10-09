@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Todo;
 use App\TodoUser;
 use App\User;
@@ -22,9 +23,11 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::all();
+        $yourTodos = Todo::where('user_id', '=', Auth::user()->id)->get();
         return view(
             'todo.index',
-            compact('todos'));
+            compact('todos'),
+            compact('yourTodos'));
 
 //        $todos = Todo::orderBy('name', 'desc')->paginate(5);
 //        return view('todo.index')->with('todos', $todos);
@@ -53,13 +56,6 @@ class TodoController extends Controller
             return redirect('/')->with('success', 'User has been added.');
         }
         return redirect('/todo/'.$request->get('todo_id'))->with('error', 'User has already been added to this list.');
-        // $todoUser = new TodoUser();
-            $user_name = $request->get('name');
-            $todoUser->user_id = User::find($user_name)->id;
-            $todoUser->todo_id = $request->get('todo_id');
-        // $todoUser->save();
-        
-        return redirect('/')->with('success', 'Todo list has been made.');
     }
 
     /**
