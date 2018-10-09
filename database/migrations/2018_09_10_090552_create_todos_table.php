@@ -20,9 +20,9 @@ class CreateTodosTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('todos', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
-        });
+//        Schema::table('todos', function($table) {
+//            $table->foreign('user_id')->references('id')->on('tasks');
+//        });
     }
 
     /**
