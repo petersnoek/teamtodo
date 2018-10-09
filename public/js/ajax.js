@@ -1,9 +1,12 @@
 
 $( document ).ready(function() {
+    var myHtml = $('#title')[0].outerHTML;
     $( "#title" ).click(function() {
-        var Input = $(this).text();
-        $( this ).replaceWith( "<input id='inputlg' class='form-control'>");
-        $( "#inputlg").val(Input);
+        var name = $(this).text();
+        var id = $("#title").attr('data-id');
+        console.log(id, name);
+        var typen = $( this ).replaceWith( "<input id='newName' name='name' class='form-control'>");
+        $( "#newName").val(name);
         var img = $('<img />',
             { id: 'checkimg',
                 src: '/imgs/check.png',
@@ -11,18 +14,26 @@ $( document ).ready(function() {
             .appendTo($('#foto'));
 
         $( "#checkimg" ).click(function() {
-            alert( "Handler for .click() called." );
+            var newName = $("#newName").val();
+            console.log(newName);
+            $.ajax({
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    type: 'POST',
+                    url: 'http://127.0.0.1:8000/todo/ajax/' + id,
+                    data: {
+                        name: newName
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        img.remove();
+                        $("#newName").replaceWith(myHtml);
+                        $("#title").text(response['name']);
+                    },
+                    error: function (response) {
+                        console.log(response)
+                    }
+
+                })
         });
     });
-
-
-
-
-
 });
-
-// <input type="text" class="form-control" aria-label="Default">
-
-// function areyousure() {
-//     confirm("Are you sure to delete?");
-// }

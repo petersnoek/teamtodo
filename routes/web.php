@@ -31,7 +31,7 @@ Route::post('/store/todoUser', 'TodoController@storeTodoUser');
 Route::get('delete/{id}', 'TodoController@destroy');
 Route::get('/todo/{todo}', 'TodoController@show');
 Route::get('/edit/todo/{todo}', 'TodoController@edit');
-Route::get('/update/todo', 'TodoController@update');
+//Route::get('/update/todo', 'TodoController@update');
 
 
 //Store delete and update show tasks
@@ -39,3 +39,6 @@ Route::post('/store/todo/task', 'TaskController@store');
 Route::get('/task/{task}', 'TaskController@show');
 Route::post('/update/task', 'TaskController@update');
 Route::get('delete/task/{id}', 'TaskController@destroy');
+
+
+Route::post('/todo/ajax/{id}', 'TodoController@update');

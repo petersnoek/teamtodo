@@ -4,7 +4,7 @@
 @section('content')
     <div class="form-group row">
         <div class="col-xs-2" id="foto">
-            <h1 for="inputdefault" id="title">{{ $todo->name }} <img src="/imgs/pencil.png" alt="pencil" style="cursor: pointer;"></h1>
+            <h1 data-id="{{$todo->id}}" id="title">{{ $todo->name }} <img src="/imgs/pencil.png" alt="pencil" style="cursor: pointer;"></h1>
         </div>
     </div>
 

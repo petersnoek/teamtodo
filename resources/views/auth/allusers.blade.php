@@ -1,3 +1,15 @@
+@extends('layouts.app')
+
+
+@section('content')
+
 @foreach($users as  $user)
-    {{ $user->name }} <br>
+    <ul>
+        <li>{{ $user->name }}</li>
+    </ul>
 @endforeach
+
+
+
+
+@endsection
