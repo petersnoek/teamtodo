@@ -10,18 +10,13 @@
 
 
 
-
-<ul>
     @foreach($todo->tasks as $task)
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                    <a href="/task/{{$task->id}}">{{ $task->content }}</a><a href="/delete/task/{{$task->id}}" onclick="return confirm('Are you sure to delete?')" class="float-right">x</a>
-                </div>
-            </div>
-        </div>
+                <label id="labelDone" class="customcheck"><a href="/task/{{$task->id}}">{{ $task->content }}</a><a href="/delete/task/{{$task->id}}" onclick="return confirm('Are you sure to delete?')" class="ml-5">x</a>
+                    <input data-task-id="{{$task->id}}" data-task-name="{{$task->content}}" class="custom-checkbox" type="checkbox" @if(!$task->done == 0)
+                        checked @endif>
+                    <span class="checkmark"></span>
+                </label>
     @endforeach
-</ul>
 
 <hr>
 
