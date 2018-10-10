@@ -1,0 +1,10 @@
+
+.home-lists {
+	width: 30%;
+	display: inline-grid;
+	padding: 1%;
+	margin: 0 1%;
+}
+.col-sm-4 {
+	max-width: 95%;
+}

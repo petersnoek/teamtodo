@@ -2,13 +2,40 @@
 
 @section('content')
     {{--{{dd($task)}}--}}
+    <link href="{{ asset('css/hometodo.css') }}" rel="stylesheet">
 
+<div class="home-lists">
+    <h1>All Todos</h1>
 
-@foreach($task as $ding)
+    @foreach($todos as $todo)
 
-{{ $ding->content }} {{ $ding->todo }}
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <a href="/todo/{{$todo->id}}">{{ $todo->name }}</a>
+                    <a href="/delete/{{$todo->id}}" class="float-right">x</a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
 
-@endforeach
+<div class="home-lists">
+    <h1>Your Todos</h1>
 
+    @foreach($yourTodos as $yourTodo)
 
-@endsection
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <a href="/todo/{{$yourTodo->id}}">{{ $yourTodo->name }}</a>
+                    <a href="/delete/{{$yourTodo->id}}" class="float-right">x</a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+    {{--{{ $todos->links() }}--}}
+    <a href="/create/todo">create new todo list</a>
+
+@endsection 
