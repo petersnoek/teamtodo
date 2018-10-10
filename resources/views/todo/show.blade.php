@@ -9,14 +9,36 @@
     </div>
 
 
-
+    <div id="task">
     @foreach($todo->tasks as $task)
-                <label id="labelDone" class="customcheck"><a href="/task/{{$task->id}}">{{ $task->content }}</a><a href="/delete/task/{{$task->id}}" onclick="return confirm('Are you sure to delete?')" class="ml-5">x</a>
+                <label id="labelDone" class="customcheck"><a href="#" id="{{$task->id}}" data-id-task="{{$task->id}}" class="task-content">{{ $task->content }}</a> <img src="/imgs/pencil.png" alt="pencil" style="cursor: pointer;"><a href="/delete/task/{{$task->id}}" onclick="return confirm('Are you sure to delete?')" class="ml-5">x</a>
                     <input data-task-id="{{$task->id}}" data-task-name="{{$task->content}}" class="custom-checkbox" type="checkbox" @if(!$task->done == 0)
                         checked @endif>
                     <span class="checkmark"></span>
                 </label>
     @endforeach
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="task-content-input" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close" name="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="save" name="save" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <hr>
 

@@ -43,3 +43,4 @@ Route::get('delete/task/{id}', 'TaskController@destroy');
 
 Route::post('/todo/ajax/{id}', 'TodoController@update');
 Route::post('/task/ajax/{id}', 'TaskController@done');
+Route::post('/task/edit/ajax/{id}','TaskController@editAjax');

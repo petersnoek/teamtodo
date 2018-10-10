@@ -105,4 +105,17 @@ class TaskController extends Controller
         $task->delete();
         return back();
     }
+
+    public function editAjax(Request $request, $id)
+    {
+        $task = Task::find($id);
+        $task->content = $request->get('name');
+        $task->save();
+        return response()->json([
+            'succes' => 'Updated',
+            'error' => 'error',
+            'id' => $task->id,
+            'content' => $task->content,
+        ]);
+    }
 }
