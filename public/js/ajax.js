@@ -69,4 +69,47 @@ $( document ).ready(function() {
             });
 
     });
+
+    $('.task-content').click(function () {
+        var send;
+        var taskId = $(this).attr('data-id-task');
+        var taskContent = $(this).text();
+        console.log(taskContent, taskId);
+        $(this).attr('data-toggle', 'modal');
+        $(this).attr('data-target', '#exampleModal');
+        $("#task-content-input").val(taskContent);
+        var close = $("#close");
+        var save = $("#save");
+        close.click(function () {
+            send = false;
+            console.log(send);
+        });
+        save.click(function () {
+            send = true;
+            console.log(send);
+            var newTask = $("#task-content-input").val();
+
+            $.ajax({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'POST',
+                url: 'http://127.0.0.1:8000/task/edit/ajax/' + taskId,
+                data: {
+                    id: taskId,
+                    name: newTask
+                },
+                success: function (response) {
+                    console.log(response);
+                    $("#" + response['id']).text(response['content']);
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            })
+        });
+
+
+
+    });
 });
+
+//data-toggle="modal" data-target="#exampleModal"

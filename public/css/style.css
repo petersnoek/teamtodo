@@ -12,6 +12,14 @@ input[type="image"] {
     border:none;
 }
 
+a{
+    color: black;
+}
+
+a:hover{
+    text-decoration: none; !important;
+}
+
 img#checkimg {cursor: pointer;}
 
 .customcheck {
