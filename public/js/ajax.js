@@ -1,3 +1,5 @@
+var url = 'http://localhost';
+
 
 $( document ).ready(function() {
     var myHtml = $('#title')[0].outerHTML;
@@ -22,7 +24,7 @@ $( document ).ready(function() {
             $.ajax({
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     type: 'POST',
-                    url: 'http://127.0.0.1:8000/todo/ajax/' + id,
+                    url:  url + '/todo/ajax/' + id,
                     data: {
                         name: newName
                     },
@@ -54,7 +56,7 @@ $( document ).ready(function() {
             $.ajax({
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: "POST",
-                url: 'http://127.0.0.1:8000/task/ajax/' + idDone,
+                url: url +  '/task/ajax/' + idDone,
                 data: {
                     done: done
                 },
@@ -92,7 +94,7 @@ $( document ).ready(function() {
             $.ajax({
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'POST',
-                url: 'http://127.0.0.1:8000/task/edit/ajax/' + taskId,
+                url: url + '/etask/edit/ajax/' + taskId,
                 data: {
                     id: taskId,
                     name: newTask
