@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\models\Todo;
+use Illuminate\Support\Facades\Auth;
+use App\Todo;
+use App\TodoUser;
+use App\User;
 
 class TodoController extends Controller
 {
-	public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -19,13 +22,15 @@ class TodoController extends Controller
      */
     public function index()
     {
-        
-    }
+        $todos = Todo::all();
+        $yourTodos = Todo::where('user_id', '=', Auth::user()->id)->get();
+        return view(
+            'todo.index',
+            compact('todos'),
+            compact('yourTodos'));
 
-    public function getTodos()
-    {
-    	$todos = DB::select('select * from todos', array(1));
-    	return view('home', ['todos'=>$todos]);
+//        $todos = Todo::orderBy('name', 'desc')->paginate(5);
+//        return view('todo.index')->with('todos', $todos);
     }
 
     /**
@@ -35,7 +40,22 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('todo.create');
+    }
+
+    public function storeTodoUser(Request $request)
+    {
+        $user = User::where('name', '=', $request->get('user'))->first();
+        if ($user === null) {
+            $todoUser = new TodoUser();
+                $user_name = $request->get('user');
+                $todoUser->user_id = User::where('name', $user_name)->first()->id;
+                $todoUser->todo_id = $request->get('todo_id');
+            $todoUser->save();
+            
+            return redirect('/')->with('success', 'User has been added.');
+        }
+        return redirect('/todo/'.$request->get('todo_id'))->with('error', 'User has already been added to this list.');
     }
 
     /**
@@ -46,9 +66,9 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $todo = new \App\models\Todo;
-        $todo->name = $request->get('name');
-        $todo->user_id = $request->get('user_id');
+        $todo = new Todo();
+            $todo->name = $request->get('name');
+            $todo->user_id = $request->get('user_id');
         $todo->save();
         
         return redirect('/')->with('success', 'Todo list has been made.');
@@ -60,9 +80,9 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Todo $todo)
     {
-        //
+        return view('todo.show', compact('todo'));
     }
 
     /**
@@ -73,7 +93,7 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -85,7 +105,14 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $todo = Todo::find($id);
+        $todo->name = $request->get('name');
+        $todo->save();
+
+            return response()->json([
+                'id' => $todo->id,
+                'name' => $todo->name,
+            ]);
     }
 
     /**
@@ -96,6 +123,10 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $todo = Todo::find($id);
+
+        $todo->delete();
+
+        return back();
     }
 }

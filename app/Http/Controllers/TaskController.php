@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,11 +19,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $task = Task::all();
-        return view(
-            'todo.index',
-            compact('task')
-        );
+
     }
 
     /**
@@ -28,7 +29,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('todo.show');
     }
 
     /**
@@ -39,7 +40,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create([
+            'content' => request('content'),
+            'todo_id' => request('todo_id'),
+        ]);
+        return back();
     }
 
     /**
@@ -50,7 +55,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return view('task.show', compact('task'));
     }
 
     /**
@@ -59,9 +64,17 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function done(Request $request, $id)
     {
-        //
+        $task = Task::find($id);
+        $task->done = $request->get('done');
+        $task->save();
+
+        return response()->json([
+           'id' => $task->id,
+           'content' => $task->content,
+            'done' => $task->done
+        ]);
     }
 
     /**
@@ -73,7 +86,11 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $id = $request->get('todo');
+        $update = Task::find($request->get('id'));
+        $update->content = $request->get('content');
+        $update->save();
+        return redirect('/todo/' . $id);
     }
 
     /**
@@ -82,8 +99,23 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        $task->delete();
+        return back();
+    }
+
+    public function editAjax(Request $request, $id)
+    {
+        $task = Task::find($id);
+        $task->content = $request->get('name');
+        $task->save();
+        return response()->json([
+            'succes' => 'Updated',
+            'error' => 'error',
+            'id' => $task->id,
+            'content' => $task->content,
+        ]);
     }
 }

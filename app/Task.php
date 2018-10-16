@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['content', 'todo'];
-    public function todo()
+    protected $fillable = ['content', 'todo_id'];
+
+    public function todos()
     {
-        //$todo->task
-        //        return $this->belongsTo(::class);
+        return $this->belongsTo(Todo::class);
     }
 }
