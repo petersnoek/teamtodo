@@ -9,8 +9,6 @@
     </div>
 
 
-
-
 <ul>
     @foreach($todo->tasks as $task)
         <div class="col-sm-4">
@@ -25,12 +23,20 @@
 
 <hr>
 
+<div class="row todoUsers">
+    <div class="todoUser"></div>
+    @foreach($todoUsers as $todoUser)
+        <div class="todoUser">
+            <p>{{ $todoUser->get()[0]->name }}</p>
+        </div>
+    @endforeach
+</div>
+
 <div class="row justify-content-center">
     <div style="margin-bottom: 20px;" class="col-md-8">
         <div class="card">
             <div class="card-header"><p style="margin: 7px 0;float: left;">Add user</p>
-                <form style="float: right;" method="post" action="{{url('store/todoUser')}}">
-                <form style="float: right;" method="post" action="{{url('store/todo/addUser')}}">
+                <form style="float: right;" method="post" action="{{ url('store/todoUser') }}">
                     @csrf
                     <input hidden type="text" name="todo_id" value="{{ $todo->id }}">
                     <input style="width: 200px;display: inline-block;" type="text" class="form-control" name="user" placeholder="Add user...">
