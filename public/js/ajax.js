@@ -1,4 +1,4 @@
-var url = 'http://localhost';
+var url = 'http://127.0.0.1:8000';
 
 
 $( document ).ready(function() {
@@ -14,32 +14,40 @@ $( document ).ready(function() {
                 src: '/imgs/check.png',
                 type: 'image',
                 value: 'submit'
-
             })
             .appendTo($('#foto'));
 
-        $( "#checkimg" ).click(function() {
+        $('#inputlg').on('keypress', (event)=> {
+            if(event.which === 13){
+                saveToDatabase();
+            }
+        });
+
+        $( "#checkimg" ).click(saveToDatabase);
+
+
+        function saveToDatabase() {
             var newName = $("#inputlg").val();
             console.log(newName);
             $.ajax({
-                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    type: 'POST',
-                    url:  url + '/todo/ajax/' + id,
-                    data: {
-                        name: newName
-                    },
-                    success: function (response) {
-                        console.log(response);
-                        img.remove();
-                        $("#inputlg").replaceWith(myHtml);
-                        $("#title").text(response['name']);
-                    },
-                    error: function (response) {
-                        console.log(response)
-                    }
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'POST',
+                url:  url + '/todo/ajax/' + id,
+                data: {
+                    name: newName
+                },
+                success: function (response) {
+                    console.log(response);
+                    img.remove();
+                    $("#inputlg").replaceWith(myHtml);
+                    $("#title").text(response['name']);
+                },
+                error: function (response) {
+                    console.log(response)
+                }
 
-                })
-        });
+            })
+        }
     });
 
     $('.customcheck').on('click', '.custom-checkbox',function() {

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {{--{{dd($task)}}--}}
     <link href="{{ asset('css/hometodo.css') }}" rel="stylesheet">
 
 <div class="home-lists">
