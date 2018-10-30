@@ -13,7 +13,7 @@ class CreateUserteamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('userteams', function (Blueprint $table) {
+        Schema::create('team_user', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('team_id');
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreateUserteamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userteams');
+        Schema::dropIfExists('team_user');
     }
 }
