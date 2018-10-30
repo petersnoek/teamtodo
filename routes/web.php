@@ -46,4 +46,6 @@ Route::post('/task/ajax/{id}', 'TaskController@done');
 Route::post('/task/edit/ajax/{id}','TaskController@editAjax');
 
 //teams
-Route::get('/create/team', 'TeamController@index');
+Route::get('/teams', 'TeamController@index');
+Route::get('/create/team', 'TeamController@create');
+Route::post('/store/team', 'TeamController@store');
