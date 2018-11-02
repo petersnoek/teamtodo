@@ -21,6 +21,12 @@ class TeamController extends Controller
             );
     }
 
+    public function show(Request $request, $id)
+    {
+        $team = Team::find($id);
+        return view('team.show', compact('team'));
+    }
+
     public function create()
     {
         return view('team.create');
@@ -32,7 +38,7 @@ class TeamController extends Controller
             $team->name = $request->get('name');
         $team->save();
 
-        return redirect('/teams');
+        return redirect('/teams/' . $team->id);
     }
 
 }

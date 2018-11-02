@@ -53,7 +53,6 @@
                     <input style="width: 200px;display: inline-block;" type="text" class="form-control" name="user" placeholder="Add user...">
                     <button style="display: inline-block;" type="submit" class="btn btn-success">Submit</button>
                 </form>
-            </div>
         </div>
     </div>
     <div class="col-md-8">
