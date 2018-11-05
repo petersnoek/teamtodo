@@ -16,8 +16,10 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::all();
+        $userId = Auth::user()->id;
         return view('team.index',
-            compact('teams')
+            compact('teams',
+                'userId')
             );
     }
 
@@ -29,7 +31,8 @@ class TeamController extends Controller
 
     public function create()
     {
-        return view('team.create');
+        $userId = Auth::user()->id;
+        return view('team.create', compact('userId'));
     }
 
     public function store(Request $request)
@@ -37,6 +40,10 @@ class TeamController extends Controller
         $team = new Team();
             $team->name = $request->get('name');
         $team->save();
+
+        $userId = $request->get('userId');
+
+        $team->users()->attach($userId);
 
         return redirect('/teams/' . $team->id);
     }

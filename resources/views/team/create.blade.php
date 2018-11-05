@@ -8,6 +8,7 @@
                 <div class="card-body">
                     <form action="/store/team" method="post">
                         @csrf
+                        <input type="hidden" value="{{ $userId }}" name="userId">
                         <div class="form-group col-md-4">
                             <label for="Name">Team name:</label>
                             <input type="text" class="form-control" autofocus="autofocus" name="name">
