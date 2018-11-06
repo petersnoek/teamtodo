@@ -2,35 +2,41 @@
 
 @section('content')
 
+    <h1>Your teams</h1>
 
-    @foreach($teams as $team)
-        {{--{{ 'team info' }}--}}
-        {{--{{ $team->id }}--}}
-        {{--{{ $team->name }} <br>--}}
+        <div class="d-flex flex-row p-auto">
 
-        {{--{{ var_dump($user) }}--}}
+        @foreach($teams as $team)
+            {{--{{ 'team info' }}--}}
+            {{--{{ $team->id }}--}}
+            {{--{{ $team->name }} <br>--}}
 
-        @foreach($team->users as $user)
-            @if($user->pivot->user_id == $userId)
-                <h1>{{$team->name}}</h1>
-            @endif
+            {{--{{ var_dump($user) }}--}}
 
-            {{--<p>user info</p>--}}
-            {{--{{ $user->id }}--}}
-            {{--{{ $user->name }}--}}
-            {{--{{ $user->email }}--}}
-            {{--<p>team_id</p>--}}
-            {{--<p>pivot team id</p>--}}
-            {{--{{ var_dump($user->pivot->user_id) }}--}}
-            {{--{{ $user->pivot->team_id }} <br>--}}
-            {{--<p>user_id</p>--}}
-            {{--<p>pivot user id</p>--}}
-            {{--{{ $user->pivot->user_id }} <br>--}}
+            @foreach($team->users as $user)
+                @if($user->pivot->user_id == $userId)
+                        <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">{{ $team->name }}</div>
+                            <div class="card-body text-secondary">
+                                <a href="/team/{{$team->id}}" class="card-title">Go to {{ $team->name }}</a>
+                            </div>
+                        </div>
+                    {{--<a href="/team/{{$team->id}}">{{$team->name}}</a>--}}
+                @endif
+
+                {{--<p>user info</p>--}}
+                {{--{{ $user->id }}--}}
+                {{--{{ $user->name }}--}}
+                {{--{{ $user->email }}--}}
+                {{--<p>team_id</p>--}}
+                {{--<p>pivot team id</p>--}}
+                {{--{{ var_dump($user->pivot->user_id) }}--}}
+                {{--{{ $user->pivot->team_id }} <br>--}}
+                {{--<p>user_id</p>--}}
+                {{--<p>pivot user id</p>--}}
+                {{--{{ $user->pivot->user_id }} <br>--}}
+            @endforeach
         @endforeach
-    @endforeach
+            </div>
 
 @endsection
-
-{{--@if($user->id == $gebruiker->pivot->user_id)--}}
-
-{{--@endif--}}

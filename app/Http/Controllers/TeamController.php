@@ -37,13 +37,17 @@ class TeamController extends Controller
 
     public function store(Request $request)
     {
+//        Create a new team
         $team = new Team();
             $team->name = $request->get('name');
         $team->save();
 
+//        Get the user id of the user that is currently logged in
         $userId = $request->get('userId');
 
+//        Save the user to the pivot table
         $team->users()->attach($userId);
+
 
         return redirect('/teams/' . $team->id);
     }

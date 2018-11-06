@@ -49,4 +49,4 @@ Route::post('/task/edit/ajax/{id}','TaskController@editAjax');
 Route::get('/teams', 'TeamController@index');
 Route::get('/create/team', 'TeamController@create');
 Route::post('/store/team', 'TeamController@store');
-Route::get('teams/{id}', 'TeamController@show');
+Route::get('team/{id}', 'TeamController@show');

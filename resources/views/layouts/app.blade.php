@@ -32,6 +32,12 @@
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
+                        <a class="nav-link" href="/teams">
+                            Teams
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="/create/team">
                             Create Team
                         </a>
