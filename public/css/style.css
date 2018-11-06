@@ -24,8 +24,12 @@ li.users {
     padding-left: 0px; !important;
 }
 
+input#myInput {
+    margin: 10px 0px;
+}
+
 .card-body{
-    padding: 10px 20px 0 10px
+    padding: 10px 20px 0 10px;
 }
 
 p{
