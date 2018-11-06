@@ -8,3 +8,7 @@
 .col-sm-4 {
 	max-width: 95%;
 }
+
+.todoUser p {
+	padding: 20px;
+}

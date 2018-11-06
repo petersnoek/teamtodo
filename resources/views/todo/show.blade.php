@@ -35,12 +35,22 @@
                 <div class="modal-footer">
                     <button type="button" id="close" name="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" id="save" name="save" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+
                 </div>
             </div>
         </div>
     </div>
 
 <hr>
+
+<div class="row todoUsers">
+    <div class="todoUser"></div>
+    @foreach($todoUsers as $todoUser)
+        <div class="todoUser">
+            <p>{{ $todoUser->get()[0]->name }}</p>
+        </div>
+    @endforeach
+</div>
 
 <div class="row justify-content-center">
         <div style="margin-bottom: 20px;" class="col-md-8">
@@ -54,6 +64,7 @@
                         <button style="display: inline-block;" type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </div>
+
             </div>
         </div>
         <div class="col-md-8">
