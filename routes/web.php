@@ -50,3 +50,4 @@ Route::get('/teams', 'TeamController@index');
 Route::get('/create/team', 'TeamController@create');
 Route::post('/store/team', 'TeamController@store');
 Route::get('team/{id}', 'TeamController@show');
+Route::get('delete/team/{id}/{uId}', 'TeamController@deleteUser');

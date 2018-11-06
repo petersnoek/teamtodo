@@ -52,4 +52,12 @@ class TeamController extends Controller
         return redirect('/teams/' . $team->id);
     }
 
+    public function deleteUser($teamId, $userId)
+    {
+        $team = Team::find($teamId);
+
+        $team->users()->detach($userId);
+        return back();
+    }
+
 }

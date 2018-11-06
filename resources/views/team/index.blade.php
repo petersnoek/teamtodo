@@ -10,7 +10,9 @@
             @foreach($team->users as $user)
                 @if($user->pivot->user_id == $userId)
                         <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                            <div class="card-header">{{ $team->name }}</div>
+                            <div class="card-header">{{ $team->name }}
+                                <a href="/delete/team/{{$team->id}}/{{$userId}}">x</a>
+                            </div>
                             <div class="card-body text-secondary">
                                 <a href="/team/{{$team->id}}" class="card-title">Go to {{ $team->name }}</a>
                             </div>
