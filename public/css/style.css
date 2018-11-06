@@ -16,13 +16,28 @@ a{
     color: black;
 }
 
+li.users {
+    list-style: none;
+}
+
+.col-sm {
+    padding-left: 0px; !important;
+}
+
+.card-body{
+    padding: 10px 20px 0 10px
+}
+
+p{
+    margin: 0px;
+}
+
 a:hover{
     text-decoration: none; !important;
 }
 .card.border-secondary.mb-3 {
     margin: 0 10px 0 0;
 }
-
 
 img#checkimg {cursor: pointer;}
 
