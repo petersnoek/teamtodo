@@ -2,12 +2,14 @@
 
 @section('content')
 
-    <h1>{{ $team->name }}</h1>
+    <h1>{{ $team->name }}</h1> <a href="/team/settings/{{ $team->id }}"><i> Team settings </i></a>
 
     <hr>
     <div class="row">
         <div class="col-sm-8">
-
+            @foreach($team->todos as $todo)
+                {{ $todo->name }}
+            @endforeach
         </div>
         <div class="col-sm-4">
             <h2>members</h2>
