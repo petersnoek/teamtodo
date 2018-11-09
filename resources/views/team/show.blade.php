@@ -7,9 +7,18 @@
     <hr>
     <div class="row">
         <div class="col-sm-8">
-            @foreach($team->todos as $todo)
-                {{ $todo->name }}
-            @endforeach
+            <div class="row">
+                @foreach($team->todos as $todo)
+                    <div class="col-sm-5">
+                        <h2>{{ $todo->name }}</h2>
+                        <ul class="list-group">
+                            @foreach($todo->teamTasks as $task)
+                                <li class="list-group-item">{{ $task->name }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endforeach
+            </div>
         </div>
         <div class="col-sm-4">
             <h2>members</h2>
@@ -44,5 +53,5 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('js/search.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/team.js') }}"></script>
 @endsection

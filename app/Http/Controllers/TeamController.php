@@ -59,7 +59,7 @@ class TeamController extends Controller
         $team->users()->attach($userId);
 
 
-        return redirect('/teams/' . $team->id);
+        return redirect('/team/' . $team->id);
     }
 
     public function deleteUser($teamId, $userId)

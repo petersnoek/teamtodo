@@ -14,4 +14,9 @@ class Teamtodo extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function teamTasks()
+    {
+        return $this->hasMany(Teamtask::class);
+    }
 }
