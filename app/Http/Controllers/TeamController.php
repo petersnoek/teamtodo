@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Team;
 use App\User;
+use App\Events\AddTodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,6 +78,12 @@ class TeamController extends Controller
         $team->users()->attach($userId);
 
         return back();
+    }
+
+    public function test()
+    {
+        event(new AddTodo('hallo'));
+        return view('addtodo');
     }
 
 }
