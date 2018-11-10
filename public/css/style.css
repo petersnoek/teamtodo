@@ -7,6 +7,14 @@
     display: inline-block;
 }
 
+#todoInput {
+    width: 200px;
+    height: 40px;
+    font-size: large;
+    vertical-align: bottom;
+    display: inline-block;
+}
+
 input[type="image"] {
     vertical-align:bottom;
     border:none;
@@ -14,6 +22,10 @@ input[type="image"] {
 
 a{
     color: black;
+}
+
+div#input {
+    display: inline-flex;
 }
 
 li.users {

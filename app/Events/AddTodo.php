@@ -11,19 +11,19 @@ class AddTodo implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $username;
+    public $todoName;
 
-    public $message;
+    public $todoId;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($username)
+    public function __construct($todoName, $todoId)
     {
-        $this->username = $username;
-        $this->message  = "{$username} liked your status";
+        $this->todoName = $todoName;
+        $this->todoId = $todoId;
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Team;
+use App\Teamtodo;
 use App\User;
 use App\Events\AddTodo;
 use Illuminate\Http\Request;
@@ -80,10 +81,20 @@ class TeamController extends Controller
         return back();
     }
 
-    public function test()
+    public function addTodo(Request $request, $teamId)
     {
-        event(new AddTodo('hallo'));
-        return view('addtodo');
+        $todo = new Teamtodo();
+            $todo->name = $request->get('name');
+            $todo->team_id = $teamId;
+
+        if ($todo->save()) {
+            event(new AddTodo($todo->name, $teamId));
+        }
+
+        return response()->json([
+            'id' => $todo->id,
+            'name' => $todo->name
+        ]);
     }
 
 }
