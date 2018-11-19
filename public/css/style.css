@@ -19,6 +19,9 @@ input[type="image"] {
     vertical-align:bottom;
     border:none;
 }
+div.todoName {
+    display: inline-flex;
+}
 
 a{
     color: black;

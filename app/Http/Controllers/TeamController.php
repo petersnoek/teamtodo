@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\DeleteTodo;
 use App\Team;
 use App\Teamtodo;
 use App\User;
@@ -95,6 +96,15 @@ class TeamController extends Controller
             'id' => $todo->id,
             'name' => $todo->name
         ]);
+    }
+
+    public function deleteTodo($id)
+    {
+        $todo = Teamtodo::find($id);
+        $todo->delete();
+        event(new DeleteTodo($id));
+
+        return back();
     }
 
 }

@@ -53,5 +53,5 @@ Route::get('team/{id}', 'TeamController@show');
 Route::get('delete/team/{id}/{uId}', 'TeamController@deleteUser');
 Route::get('/add/user/team/{id}/{uId}', 'TeamController@addUser');
 Route::post('/team/add/todo/{id}','TeamController@addTodo');
+Route::get('/detele/team/todo/{id}','TeamController@deleteTodo');
 
-Route::get('/test', 'TeamController@test');

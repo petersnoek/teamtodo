@@ -11,19 +11,29 @@
         <div class="col-sm-8">
             <div class="row" id="teamTodos">
                 @foreach($team->todos as $todo)
-                    <div class="col-sm-5">
-                        <h2>{{ $todo->name }}</h2>
-                        <ul class="list-group">
+                    <div class="col-sm-6">
+                        <div data-id="{{$todo->id}}" class="todoName" id="todoName{{$todo->id}}">
+                            <h2>{{ $todo->name }}</h2>
+                            <a href="/detele/team/todo/{{$todo->id}}" onclick="return confirm('Are you sure to delete this todo?')" style="float: right;">x</a>
+                        </div>
+                        <div id="task">
                             @foreach($todo->teamTasks as $task)
-                                <li class="list-group-item">{{ $task->name }}</li>
+
+                                <label id="labelDone" class="customcheck"><a href="#" id="{{$task->id}}" data-id-task="{{$task->id}}" class="task-content">{{ $task->name }}</a>
+                                    <img src="/imgs/pencil.png" alt="pencil" style="cursor: pointer;"><a href="/delete/task/{{$task->id}}" onclick="return confirm('Are you sure to delete?')" class="ml-5">x</a>
+                                    <input data-task-id="{{$task->id}}" data-task-name="{{$task->name}}" class="custom-checkbox" type="checkbox" @if(!$task->done == 0)
+                                    checked @endif>
+                                    <span class="checkmark"></span>
+                                </label>
                             @endforeach
-                        </ul>
+                        </div>
+                        <hr>
                     </div>
                 @endforeach
-                <div id="input">
-                    <input type="hidden" value="test" placeholder="name" id="todoInput" class="form-control">
-                    <input type="hidden" id="todoSubmit" data-id="{{$team->id}}" class="form-control btn btn-primary"/>
-                </div>
+            </div>
+            <div id="input">
+                <input type="hidden" placeholder="name" id="todoInput" class="form-control">
+                <input type="hidden" id="todoSubmit" data-id="{{$team->id}}" class="form-control btn btn-primary"/>
             </div>
         </div>
 
