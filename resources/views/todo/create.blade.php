@@ -12,7 +12,7 @@
                     	<input hidden type="text" name="user_id" value="{{Auth::user()->id}}">
                     	<div class="form-group col-md-4">
 							<label for="Name">Name:</label>
-							<input type="text" class="form-control" name="name">
+							<input autofocus="autofocus" type="text" class="form-control" name="name" >
 						</div>
 						<div class="form-group col-md-4" style="margin-top:60px">
 						<button type="submit" class="btn btn-success">Submit</button>
