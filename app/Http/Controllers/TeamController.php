@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\DeleteTodo;
 use App\Team;
+use App\Teamtodo;
 use App\User;
+use App\Events\AddTodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,7 +62,7 @@ class TeamController extends Controller
         $team->users()->attach($userId);
 
 
-        return redirect('/teams/' . $team->id);
+        return redirect('/team/' . $team->id);
     }
 
     public function deleteUser($teamId, $userId)
@@ -75,6 +78,31 @@ class TeamController extends Controller
         $team = Team::find($teamId);
 
         $team->users()->attach($userId);
+
+        return back();
+    }
+
+    public function addTodo(Request $request, $teamId)
+    {
+        $todo = new Teamtodo();
+            $todo->name = $request->get('name');
+            $todo->team_id = $teamId;
+
+        if ($todo->save()) {
+            event(new AddTodo($todo->name, $teamId));
+        }
+
+        return response()->json([
+            'id' => $todo->id,
+            'name' => $todo->name
+        ]);
+    }
+
+    public function deleteTodo($id)
+    {
+        $todo = Teamtodo::find($id);
+        $todo->delete();
+        event(new DeleteTodo($id));
 
         return back();
     }

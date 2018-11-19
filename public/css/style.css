@@ -7,13 +7,28 @@
     display: inline-block;
 }
 
+#todoInput {
+    width: 200px;
+    height: 40px;
+    font-size: large;
+    vertical-align: bottom;
+    display: inline-block;
+}
+
 input[type="image"] {
     vertical-align:bottom;
     border:none;
 }
+div.todoName {
+    display: inline-flex;
+}
 
 a{
     color: black;
+}
+
+div#input {
+    display: inline-flex;
 }
 
 li.users {
@@ -24,8 +39,12 @@ li.users {
     padding-left: 0px; !important;
 }
 
+input#myInput {
+    margin: 10px 0px;
+}
+
 .card-body{
-    padding: 10px 20px 0 10px
+    padding: 10px 20px 0 10px;
 }
 
 p{
