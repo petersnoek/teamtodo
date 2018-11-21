@@ -35,10 +35,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        if(strlen($request->content) > 200) {        
+            return redirect()->back()->with('message', 'You have to many characters in your task, the maximum is 200.');
+        }
+
         Task::create([
             'content' => request('content'),
             'todo_id' => request('todo_id'),
         ]);
+
         return back();
     }
 

@@ -97,7 +97,14 @@ $( document ).ready(function() {
         save.click(function () {
             send = true;
             console.log(send);
+
             var newTask = $("#task-content-input").val();
+            var newTaskLength = $("#task-content-input").val().length;
+
+            if(newTaskLength > 200) {
+                alert('You have to many characters in your task, the maximum is 200.');
+                return;
+            }
 
             $.ajax({
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
