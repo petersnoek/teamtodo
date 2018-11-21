@@ -61,17 +61,33 @@
 
 <div class="row justify-content-center">
         <div style="margin-bottom: 20px;" class="col-md-8">
+
+            @if (session('message'))
+                <div class="alert alert-danger">
+                    {{session('message')}}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="card">
-                <div class="card-header"><p style="margin: 7px 0;float: left;">Add user</p>
+                <div class="card-header"><p style="margin: 7px 0;float: left;">Add user by e-mail</p>
                     {{--<form style="float: right;" method="post" action="{{url('store/todoUser')}}">--}}
                     <form style="float: right;" method="post" action="{{url('store/todo/addUser')}}">
                         @csrf
                         <input hidden type="text" name="todo_id" value="{{ $todo->id }}">
-                        <input style="width: 200px;display: inline-block;" type="text" class="form-control" name="user" placeholder="Add user...">
+                        <input style="width: 200px;display: inline-block;" type="text" class="form-control" name="user" placeholder="User e-mail..." required>
                         <button style="display: inline-block;" type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </div>
-
             </div>
         </div>
         <div class="col-md-8">
@@ -80,19 +96,13 @@
 
                 <div class="card-body">
 
-                    @if (session('message'))
-                        <div class="alert alert-danger">
-                            {{session('message')}}
-                        </div>
-                    @endif
-
                     <form method="post" action="{{url('store/todo/task')}}">
                         @csrf
                         <input hidden type="text" name="todo_id" value="{{ $todo->id }}">
 
                         <div class="form-group">
                             <label for="Name">Task</label>
-                            <textarea name="content" rows="5" cols="80" class="form-control" placeholder="Add task..."></textarea>
+                            <textarea name="content" rows="5" cols="80" class="form-control" placeholder="Add task..." required></textarea>
                         </div>
 
                         <div class="form-group">

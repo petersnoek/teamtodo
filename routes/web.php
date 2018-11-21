@@ -39,6 +39,7 @@ Route::post('/store/todo/task', 'TaskController@store');
 Route::get('/task/{task}', 'TaskController@show');
 Route::post('/update/task', 'TaskController@update');
 Route::get('delete/task/{id}', 'TaskController@destroy');
+Route::post('/store/todo/addUser', 'TaskController@addUser');
 
 
 Route::post('/todo/ajax/{id}', 'TodoController@update');
@@ -54,4 +55,3 @@ Route::get('delete/team/{id}/{uId}', 'TeamController@deleteUser');
 Route::get('/add/user/team/{id}/{uId}', 'TeamController@addUser');
 Route::post('/team/add/todo/{id}','TeamController@addTodo');
 Route::get('/detele/team/todo/{id}','TeamController@deleteTodo');
-
