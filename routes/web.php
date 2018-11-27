@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', 'RouteController@login');
+Route::get('/dashboard', 'RouteController@dashboard');
