@@ -1,22 +1,31 @@
-@extends('layouts.app')
+@include('templates.head')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+<body>
+<!-- Register Content -->
+<div class="bg-white pulldown">
+    <div class="content content-boxed overflow-hidden">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+                <div class="push-30-t push-20 animated fadeIn">
+                    <!-- Register Title -->
+                    <div class="text-center">
+                        <i class="fa fa-2x fa-circle-o-notch text-primary"></i>
+                        <h1 class="h3 push-10-t">Create Account</h1>
+                    </div>
+                    <!-- END Register Title -->
+
+                    <!-- Register Form -->
+                    <!-- jQuery Validation (.js-validation-register class is initialized in js/pages/base_pages_register.js) -->
+                    <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                    <form class="js-validation-register form-horizontal push-50-t push-50" action="{{ route('register') }}" method="post">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-material form-material-success">
+                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" type="text" id="register-username" placeholder="Please enter your name" required>
+                                    <label for="register-username">Username</label>
+                                </div>
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -24,13 +33,12 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-material form-material-success">
+                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                    <label for="register-email">Email</label>
+                                </div>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -38,13 +46,12 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-material form-material-success">
+                                    <input id="register-password" type="password" placeholder="Choose a strong password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                    <label for="register-password">Password</label>
+                                </div>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -52,26 +59,30 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-material form-material-success">
+                                    <input class="form-control" type="password" id="register-password2" name="password_confirmation" placeholder="..and confirm it" required>
+                                    <label for="register-password2">Confirm Password</label>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                                <button class="btn btn-sm btn-block btn-success" type="submit">Create Account</button>
                             </div>
                         </div>
                     </form>
+                    <!-- END Register Form -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<!-- END Register Content -->
+
+<!-- Register Footer -->
+<div class="pulldown push-30-t text-center animated fadeInUp">
+    <small class="text-muted"><span class="js-year-copy"></span> &copy; OneUI 3.4</small>
+</div>
+<!-- END Register Footer -->
