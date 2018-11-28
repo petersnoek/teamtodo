@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li>
-                    <a tabindex="-1" href="base_pages_login.html">
+                    <a tabindex="-1" href="/logout">
                         <i class="si si-logout pull-right"></i>Log out
                     </a>
                 </li>
