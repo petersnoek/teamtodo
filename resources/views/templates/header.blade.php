@@ -18,7 +18,7 @@
                 <li>
                     <a tabindex="-1" href="/profile/{{$user->id}}">
                         <i class="si si-user pull-right"></i>
-                        <span class="badge badge-success pull-right">1</span>Profile
+                        Profile
                     </a>
                 </li>
                 <li>
