@@ -20,4 +20,10 @@ class RouteController extends Controller
             return view('auth.login');
         }
     }
+
+    public function profile($id) {
+        $user = User::find($id);
+
+        return view('profile')->with(['user' => $user]);
+    }
 }

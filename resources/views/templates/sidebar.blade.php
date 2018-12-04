@@ -22,7 +22,7 @@
             <div class="side-content side-content-full">
                 <ul class="nav-main">
                     <li>
-                        <a class="active" href="base_pages_dashboard.html"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                        <a class="active" href="/dashboard"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                     </li>
                     <li>
                         <a href="base_pages_dashboard_v2.html"><i class="si si-rocket"></i><span class="sidebar-mini-hide">Dashboard v2</span></a>
