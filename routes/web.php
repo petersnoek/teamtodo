@@ -14,7 +14,10 @@
 
 Route::get('/', 'RouteController@login');
 Route::get('/dashboard', 'RouteController@dashboard');
-Route::get('/profile/{id}', 'RouteController@profile');
+
+//User
+Route::get('/profiel/{id}', 'RouteController@profile');
+Route::get('/instellingen', 'RouteController@settings');
 
 //Auth
 Auth::routes();

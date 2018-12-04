@@ -22,12 +22,12 @@
             <div class="content bg-white border-b">
                 <div class="row items-push text-uppercase">
                     <div class="col-xs-6 col-sm-3">
-                        <div class="font-w700 text-gray-darker animated fadeIn">Sales</div>
-                        <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">17980</a>
+                        <div class="font-w700 text-gray-darker animated fadeIn">Borden</div>
+                        <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">4</a>
                     </div>
                     <div class="col-xs-6 col-sm-3">
-                        <div class="font-w700 text-gray-darker animated fadeIn">Products</div>
-                        <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">27</a>
+                        <div class="font-w700 text-gray-darker animated fadeIn">Volgers</div>
+                        <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">14</a>
                     </div>
                     <div class="col-xs-6 col-sm-3">
                         <div class="font-w700 text-gray-darker animated fadeIn">Followers</div>
