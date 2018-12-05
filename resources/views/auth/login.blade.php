@@ -26,10 +26,6 @@
                                     <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Voer je e-mail in..." type="email" id="login-username" name="email" required autofocus>
                                     <label for="login-username">E-Mail</label>
 
-                                <div class="form-material form-material-primary floating">
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" type="email" id="login-username" name="email" required autofocus>
-                                    <label for="login-username">Email</label>
-
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -45,10 +41,6 @@
                                 <div class="form-material form-material-primary">
                                     <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" placeholder="Voer je wachtwoord in..." id="login-password" name="password" required>
                                     <label for="login-password">Wachtwoord</label>
-
-                                <div class="form-material form-material-primary floating">
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" id="login-password" name="password" required>
-                                    <label for="login-password">Password</label>
 
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
@@ -66,16 +58,12 @@
 
                                     <input type="checkbox" id="login-remember-me" name="login-remember-me"><span></span> Onthoud mij?
 
-                                    <input type="checkbox" id="login-remember-me" name="login-remember-me"><span></span> Remember Me?
-
                                 </label>
                             </div>
                             <div class="col-xs-6">
                                 <div class="font-s13 text-right push-5-t">
 
                                     <a href="base_pages_reminder_v2.html">Wachtwoord vergeten?</a>
-
-                                    <a href="base_pages_reminder_v2.html">Forgot Password?</a>
 
                                 </div>
                             </div>
