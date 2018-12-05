@@ -30,6 +30,10 @@ class ProfileController extends Controller
 
     public function save(Request $request) {
 
+        $validatedData = $request->validate([
+            'omschrijving' => 'max:75',
+        ]);
+
         $user = User::find(Auth::id());
 
         if(empty($request->confirmPassword) == false) {
@@ -64,7 +68,7 @@ class ProfileController extends Controller
         $profile->linkedin = $request->linkedin;
         $profile->twitter = $request->twitter;
         $profile->facebook = $request->facebook;
-        $profile->description = $request->description;
+        $profile->description = $request->omschrijving;
         $profile->save();
 
         return redirect()->back()->with('message', 'Je profiel is succesvol aangepast.');

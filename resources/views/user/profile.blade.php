@@ -7,7 +7,11 @@
 @section('description')
     <div class="push-50-t push-15 clearfix">
         <div class="push-15-r pull-left animated fadeIn">
-            <img class="img-avatar img-avatar-thumb" src="{{asset('img/profilepictures/' . $user->profile->user_id . '.jpg')}}" alt="">
+            @if (file_exists( public_path() . '/img/profilepictures/' . $user->profile->user_id. '.jpg'))
+                <img class="img-avatar img-avatar-thumb" src="{{asset('img/profilepictures/' . $user->profile->user_id . '.jpg')}}" alt="">
+            @else
+                <img class="img-avatar img-avatar-thumb" src="{{asset('img/profilepictures/default.jpg')}}" alt="Default profile picture">
+            @endif
         </div>
         <h1 class="h2 push-5-t animated zoomIn">{{$user->name}}</h1>
         <h2 class="h5 animated zoomIn">{{$user->profile->description}}</h2>
@@ -205,11 +209,6 @@
                         <!-- Details -->
                         <div class="block">
                             <div class="block-header bg-gray-lighter">
-                                <ul class="block-options">
-                                    <li>
-                                        <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
-                                    </li>
-                                </ul>
                                 <h3 class="block-title"><i class="fa fa-user"></i> Gegevens</h3>
                             </div>
                             <div class="block-content">
@@ -259,11 +258,6 @@
                         <!-- Teams -->
                         <div class="block">
                             <div class="block-header bg-gray-lighter">
-                                <ul class="block-options">
-                                    <li>
-                                        <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
-                                    </li>
-                                </ul>
                                 <h3 class="block-title"><i class="fa fa-fw fa-briefcase"></i> Teams</h3>
                             </div>
                             <div class="block-content">

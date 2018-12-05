@@ -70,8 +70,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="description">Korte omschrijving</label>
-                                    <input class="form-control input-lg" type="text" name="description" placeholder="Vul een kleine omschrijving in..." value="{{$user->profile->description}}">
+                                    <label for="omschrijving">Korte omschrijving</label>
+                                    <input class="form-control input-lg" type="text" name="omschrijving" placeholder="Vul een kleine omschrijving in..." value="{{$user->profile->description}}">
                                 </div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@
                     <!-- END Personal Details -->
 
                     <!-- Security -->
-                    <h3 class="page-header text-black">Beveiliging</h3>
+                    {{-- <h3 class="page-header text-black">Beveiliging</h3>
                     <div class="row items-push">
                         <div class="col-md-3">
                             <p class="text-muted">
@@ -170,15 +170,12 @@
                         <div class="col-md-3 col-md-offset-1 form-horizontal">
                             <!-- Rechter column -->
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- END Security -->
                 </div>
                 <div class="block-content block-content-full bg-gray-lighter">
-                    <button class="btn btn-sm btn-success pull-right" type="submit">
+                    <button class="btn btn-sm btn-success" type="submit">
                         <i class="fa fa-check push-5-r"></i> Sla op
-                    </button>
-                    <button class="btn btn-sm btn-default" type="reset">
-                        <i class="fa fa-refresh push-5-r"></i> Zet standaardinstellingen terug
                     </button>
                 </div>
             </div>
