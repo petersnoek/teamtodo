@@ -25,6 +25,22 @@
                         </div>
                     @endif
 
+                    @if (session('errorMessage'))
+                        <div class="alert alert-danger">
+                            {{ session('errorMessage') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <!-- User Profile -->
                     <h3 class="page-header text-black">Gebruikersprofiel</h3>
                     <div class="row items-push">
@@ -42,14 +58,20 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-nickname">Naam</label>
-                                    <input class="form-control input-lg" type="text" id="crypto-profile-nickname" name="crypto-profile-nickname" placeholder="Vul je naam in..." value="{{$user->name}}">
+                                    <label for="name">Naam</label>
+                                    <input class="form-control input-lg" type="text" name="name" placeholder="Vul je naam in..." value="{{$user->name}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-email">E-Mail</label>
-                                    <input class="form-control input-lg" type="email" id="crypto-profile-email" name="crypto-profile-email" placeholder="Vul je e-mail in..." value="{{$user->email}}">
+                                    <label for="email">E-Mail</label>
+                                    <input class="form-control input-lg" type="email" name="email" placeholder="Vul je e-mail in..." value="{{$user->email}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="description">Korte omschrijving</label>
+                                    <input class="form-control input-lg" type="text" name="description" placeholder="Vul een kleine omschrijving in..." value="{{$user->profile->description}}">
                                 </div>
                             </div>
                         </div>
@@ -67,20 +89,20 @@
                         <div class="col-md-7 col-md-offset-1 form-horizontal">
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-password">Huidige wachtwoord</label>
-                                    <input class="form-control input-lg" type="password" id="crypto-profile-password" name="crypto-profile-password">
+                                    <label for="password">Huidige wachtwoord</label>
+                                    <input class="form-control input-lg" type="password" name="wachtwoord">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-password-new">Nieuw wachtwoord</label>
-                                    <input class="form-control input-lg" type="password" id="crypto-profile-password-new" name="crypto-profile-password-new">
+                                    <label for="newPassword">Nieuw wachtwoord</label>
+                                    <input class="form-control input-lg" type="password" name="newPassword">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-password-new-confirm">Bevestig nieuw wachtwoord</label>
-                                    <input class="form-control input-lg" type="password" id="crypto-profile-password-new-confirm" name="crypto-profile-password-new-confirm">
+                                    <label for="confirmPassword">Bevestig nieuw wachtwoord</label>
+                                    <input class="form-control input-lg" type="password" name="confirmPassword">
                                 </div>
                             </div>
                         </div>

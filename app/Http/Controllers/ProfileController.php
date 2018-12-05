@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Profile;
 use Auth;
+use Hash;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
     public function profile($id) {
-        $user = User::find($id);
-
-        return view('user.profile')->with(['user' => $user]);
+        if(Auth::check() == true) {
+            $user = User::find($id);
+            return view('user.profile')->with(['user' => $user]);
+        } else {
+            return view('auth.login');
+        }
     }
 
     public function settings() {
@@ -25,9 +29,33 @@ class ProfileController extends Controller
     }
 
     public function save(Request $request) {
-        // $profile = Profile::find($user->profile->id);
-        //
-        // $profile->save();
+
+        $user = User::find(Auth::id());
+
+        if(empty($request->confirmPassword) == false) {
+            $validatedData = $request->validate([
+                'wachtwoord' => 'required',
+                'confirmPassword' => 'required|same:newPassword',
+            ]);
+
+            if (Hash::check($request->wachtwoord, $user->password) == false) {
+                return redirect()->back()->with('errorMessage', 'Het ingevoerde wachtwoord klopt niet.');
+            }
+
+            $user->password = Hash::make($request->newPassword);
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        $profile = Profile::find($user->profile->id);
+        $profile->phone = $request->phone;
+        $profile->linkedin = $request->linkedin;
+        $profile->twitter = $request->twitter;
+        $profile->facebook = $request->facebook;
+        $profile->description = $request->description;
+        $profile->save();
 
         return redirect()->back()->with('message', 'Je profiel is succesvol aangepast.');
     }
