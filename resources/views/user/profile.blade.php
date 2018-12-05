@@ -230,21 +230,21 @@
 
                                     <li>
                                         <div class="push-5 clearfix">
-                                            <a class="font-w600" href="#">LinkedIn</a>
+                                            <a class="font-w600" target="_blank" href="{{$user->profile->linkedin}}">LinkedIn</a>
                                         </div>
                                         <div class="font-s13">{{$user->profile->linkedin}}</div>
                                     </li>
 
                                     <li>
                                         <div class="push-5 clearfix">
-                                            <a class="font-w600" href="#">Twitter</a>
+                                            <a class="font-w600" target="_blank" href="{{$user->profile->twitter}}">Twitter</a>
                                         </div>
                                         <div class="font-s13">{{$user->profile->twitter}}</div>
                                     </li>
 
                                     <li>
                                         <div class="push-5 clearfix">
-                                            <a class="font-w600" href="#">Facebook</a>
+                                            <a class="font-w600" target="_blank" href="{{$user->profile->facebook}}">Facebook</a>
                                         </div>
                                         <div class="font-s13">{{$user->profile->facebook}}</div>
                                     </li>
