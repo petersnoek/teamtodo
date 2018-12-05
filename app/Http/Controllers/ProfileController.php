@@ -13,6 +13,9 @@ class ProfileController extends Controller
     public function profile($id) {
         if(Auth::check() == true) {
             $user = User::find($id);
+
+            if($user == null) { return redirect()->back(); }
+
             return view('user.profile')->with(['user' => $user]);
         } else {
             return view('auth.login');
