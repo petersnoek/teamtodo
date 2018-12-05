@@ -32,6 +32,11 @@ class ProfileController extends Controller
 
         $validatedData = $request->validate([
             'omschrijving' => 'max:75',
+            'name' => 'max:50',
+            'phone' => 'max:50',
+            'linkedin' => 'max:75',
+            'twitter' => 'max:75',
+            'facebook' => 'max:75'
         ]);
 
         $user = User::find(Auth::id());
