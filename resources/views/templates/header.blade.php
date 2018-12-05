@@ -8,34 +8,29 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
-                <li class="dropdown-header">Profile</li>
+                <li class="dropdown-header">Profiel</li>
                 <li>
                     <a tabindex="-1" href="base_pages_inbox.html">
                         <i class="si si-envelope-open pull-right"></i>
-                        <span class="badge badge-primary pull-right">3</span>Inbox
+                        <span class="badge badge-primary pull-right">3</span>Berichten
                     </a>
                 </li>
                 <li>
-                    <a tabindex="-1" href="base_pages_profile.html">
+                    <a tabindex="-1" href="/profiel/{{$user->id}}">
                         <i class="si si-user pull-right"></i>
-                        <span class="badge badge-success pull-right">1</span>Profile
+                        Profiel
                     </a>
                 </li>
                 <li>
-                    <a tabindex="-1" href="javascript:void(0)">
-                        <i class="si si-settings pull-right"></i>Settings
+                    <a tabindex="-1" href="/instellingen">
+                        <i class="si si-settings pull-right"></i>Instellingen
                     </a>
                 </li>
                 <li class="divider"></li>
-                <li class="dropdown-header">Actions</li>
-                <li>
-                    <a tabindex="-1" href="base_pages_lock.html">
-                        <i class="si si-lock pull-right"></i>Lock Account
-                    </a>
-                </li>
+                <li class="dropdown-header">Acties</li>
                 <li>
                     <a tabindex="-1" href="/logout">
-                        <i class="si si-logout pull-right"></i>Log out
+                        <i class="si si-logout pull-right"></i>Log uit
                     </a>
                 </li>
             </ul>
