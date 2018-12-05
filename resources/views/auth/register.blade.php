@@ -11,6 +11,7 @@
                     <!-- Register Title -->
                     <div class="text-center">
                         <i class="fa fa-2x fa-circle-o-notch text-primary"></i>
+
                         <h1 class="h3 push-10-t">Maak een account</h1>
                     </div>
                     <!-- END Register Title -->
@@ -23,6 +24,7 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-success">
+
                                     <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" type="text" id="register-username" placeholder="Vul een gebruikersnaam in..." required>
                                     <label for="register-username">Gebruikersnaam</label>
                                 </div>
@@ -36,6 +38,7 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-success">
+
                                     <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Voer een e-mail in..." value="{{ old('email') }}" required>
                                     <label for="register-email">E-Mail</label>
                                 </div>
@@ -49,6 +52,7 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-success">
+
                                     <input id="register-password" type="password" placeholder="Voer een wachtwoord in..." class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                     <label for="register-password">Wachtwoord</label>
                                 </div>
@@ -62,6 +66,7 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-success">
+
                                     <input class="form-control" type="password" id="register-password2" name="password_confirmation" placeholder="Vul je wachtwoord opnieuw in..." required>
                                     <label for="register-password2">Confirm Password</label>
                                 </div>
@@ -69,6 +74,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
                                 <button class="btn btn-sm btn-block btn-success" type="submit">Maak account</button>
                             </div>
                         </div>
