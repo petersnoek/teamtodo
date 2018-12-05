@@ -15,7 +15,7 @@
                         </button>
                         <span>
                             <img class="img-avatar img-avatar32" src="{{asset('img/oneui/avatars/avatar10.jpg')}}" alt="">
-                            <span class="font-w600 push-10-l">John Parker</span>
+                            <span class="font-w600 push-10-l">{{$user->name}}</span>
                         </span>
                     </div>
                     <!-- END Side Header -->
@@ -41,8 +41,8 @@
                 <!-- Page Header -->
                 <div class="content bg-image overflow-hidden" style="background-image: url('{{asset('img/oneui/photos/photo3@2x.jpg')}}">
                     <div class="push-50-t push-15">
-                        <h1 class="h2 text-white animated zoomIn">Dashboard</h1>
-                        <h2 class="h5 text-white-op animated zoomIn">Welcome Administrator</h2>
+                        <h1 class="h2 text-white animated zoomIn">@yield('title')</h1>
+                        <h2 class="h5 text-white-op animated zoomIn">@yield('description')</h2>
                     </div>
                 </div>
                 <!-- END Page Header -->
