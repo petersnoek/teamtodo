@@ -50,6 +50,16 @@ class ProfileController extends Controller
         $user->save();
 
         $profile = Profile::find($user->profile->id);
+
+        if(empty($request->image) == false) {
+            $validatedData = $request->validate([
+                'image' => 'max:50000|mimes:png,jpg,jpeg',
+            ]);
+
+            $file = $request->file('image');
+            $file->move(public_path().'/img/profilepictures/', $user->id . '.jpg');
+        }
+
         $profile->phone = $request->phone;
         $profile->linkedin = $request->linkedin;
         $profile->twitter = $request->twitter;

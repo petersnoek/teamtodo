@@ -9,7 +9,7 @@
     <!-- Page Content -->
     <div class="content content-boxed" style="padding-top: 0;">
 
-        <form action="/instellingen/save" method="post">
+        <form action="/instellingen/save" method="post" enctype="multipart/form-data">
 
             {{ csrf_field() }}
 
@@ -52,8 +52,8 @@
                         <div class="col-md-7 col-md-offset-1 form-horizontal">
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-picture">Profielfoto</label>
-                                    <input type="file" class="form-control input-lg" name="profilepicture" id="crypto-profile-picture" style="padding-bottom: 56px;">
+                                    <label for="image">Profielfoto</label>
+                                    <input type="file" class="form-control input-lg" name="image" style="padding-bottom: 56px;">
                                 </div>
                             </div>
                             <div class="form-group">

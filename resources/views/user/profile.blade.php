@@ -7,7 +7,7 @@
 @section('description')
     <div class="push-50-t push-15 clearfix">
         <div class="push-15-r pull-left animated fadeIn">
-            <img class="img-avatar img-avatar-thumb" src="{{asset('img/profilepictures/' . $user->profile->image)}}" alt="">
+            <img class="img-avatar img-avatar-thumb" src="{{asset('img/profilepictures/' . $user->profile->user_id . '.jpg')}}" alt="">
         </div>
         <h1 class="h2 push-5-t animated zoomIn">{{$user->name}}</h1>
         <h2 class="h5 animated zoomIn">{{$user->profile->description}}</h2>
