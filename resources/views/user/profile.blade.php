@@ -7,10 +7,14 @@
 @section('description')
     <div class="push-50-t push-15 clearfix">
         <div class="push-15-r pull-left animated fadeIn">
-            <img class="img-avatar img-avatar-thumb" src="{{asset('img/oneui/avatars/avatar13.jpg')}}" alt="">
+            @if (file_exists( public_path() . '/img/profilepictures/' . $user->profile->user_id. '.jpg'))
+                <img class="img-avatar img-avatar-thumb" src="{{asset('img/profilepictures/' . $user->profile->user_id . '.jpg')}}" alt="">
+            @else
+                <img class="img-avatar img-avatar-thumb" src="{{asset('img/profilepictures/default.jpg')}}" alt="Default profile picture">
+            @endif
         </div>
         <h1 class="h2 push-5-t animated zoomIn">{{$user->name}}</h1>
-        <h2 class="h5 animated zoomIn">UI Designer</h2>
+        <h2 class="h5 animated zoomIn">{{$user->profile->description}}</h2>
     </div>
 @endsection
 
@@ -26,23 +30,15 @@
                         <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">4</a>
                     </div>
                     <div class="col-xs-6 col-sm-3">
-                        <div class="font-w700 text-gray-darker animated fadeIn">Volgers</div>
-                        <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">14</a>
+                        <div class="font-w700 text-gray-darker animated fadeIn">Todo's</div>
+                        <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">31</a>
                     </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="font-w700 text-gray-darker animated fadeIn">Followers</div>
-                        <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">1360</a>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="font-w700 text-gray-darker animated fadeIn">739 Ratings</div>
-                        <div class="text-warning push-10-t animated flipInX">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span class="text-muted">(4.9)</span>
-                        </div>
+                    <div class="col-xs-6 col-sm-3" style="float: right;">
+                        @if ($user->profile->user_id == Auth::id())
+                            <a style="float: right; line-height: 40px" href="/instellingen" class="btn btn-primary">Pas profiel aan</a>
+                        @else
+                            <a style="float: right; line-height: 40px" href="#" class="btn btn-primary">Verzend bericht</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -210,14 +206,58 @@
                         <!-- END Timeline -->
                     </div>
                     <div class="col-sm-5 col-lg-4">
-                        <!-- Products -->
+                        <!-- Details -->
                         <div class="block">
                             <div class="block-header bg-gray-lighter">
-                                <ul class="block-options">
+                                <h3 class="block-title"><i class="fa fa-user"></i> Gegevens</h3>
+                            </div>
+                            <div class="block-content">
+                                <ul class="list list-simple">
+
                                     <li>
-                                        <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                        <div class="push-5 clearfix">
+                                            <a class="font-w600" href="#">E-Mail</a>
+                                        </div>
+                                        <div class="font-s13">{{$user->email}}</div>
                                     </li>
+
+                                    <li>
+                                        <div class="push-5 clearfix">
+                                            <a class="font-w600" href="#">Telefoonnummer</a>
+                                        </div>
+                                        <div class="font-s13">{{$user->profile->phone}}</div>
+                                    </li>
+
+                                    <li>
+                                        <div class="push-5 clearfix">
+                                            <a class="font-w600" href="#">LinkedIn</a>
+                                        </div>
+                                        <div class="font-s13">{{$user->profile->linkedin}}</div>
+                                    </li>
+
+                                    <li>
+                                        <div class="push-5 clearfix">
+                                            <a class="font-w600" href="#">Twitter</a>
+                                        </div>
+                                        <div class="font-s13">{{$user->profile->twitter}}</div>
+                                    </li>
+
+                                    <li>
+                                        <div class="push-5 clearfix">
+                                            <a class="font-w600" href="#">Facebook</a>
+                                        </div>
+                                        <div class="font-s13">{{$user->profile->facebook}}</div>
+                                    </li>
+
                                 </ul>
+
+                            </div>
+                        </div>
+                        <!-- END Details -->
+
+                        <!-- Teams -->
+                        <div class="block">
+                            <div class="block-header bg-gray-lighter">
                                 <h3 class="block-title"><i class="fa fa-fw fa-briefcase"></i> Teams</h3>
                             </div>
                             <div class="block-content">
@@ -249,110 +289,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- END Products -->
-
-                        <!-- Ratings -->
-                        <div class="block">
-                            <div class="block-header bg-gray-lighter">
-                                <ul class="block-options">
-                                    <li>
-                                        <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
-                                    </li>
-                                </ul>
-                                <h3 class="block-title"><i class="fa fa-fw fa-pencil"></i> Ratings</h3>
-                            </div>
-                            <div class="block-content">
-                                <ul class="list list-simple">
-                                    <li>
-                                        <div class="push-5 clearfix">
-                                            <div class="text-warning pull-right">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <a class="font-w600" href="base_pages_profile.html">Ann Parker</a>
-                                            <span class="text-muted">(5/5)</span>
-                                        </div>
-                                        <div class="font-s13">Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!</div>
-                                    </li>
-                                    <li>
-                                        <div class="push-5 clearfix">
-                                            <div class="text-warning pull-right">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <a class="font-w600" href="base_pages_profile.html">Lisa Gordon</a>
-                                            <span class="text-muted">(5/5)</span>
-                                        </div>
-                                        <div class="font-s13">Great value for money and awesome support! Would buy again and again! Thanks!</div>
-                                    </li>
-                                    <li>
-                                        <div class="push-5 clearfix">
-                                            <div class="text-warning pull-right">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <a class="font-w600" href="base_pages_profile.html">Walter Fox</a>
-                                            <span class="text-muted">(5/5)</span>
-                                        </div>
-                                        <div class="font-s13">Working great in all my devices, quality and quantity in a great package! Thank you!</div>
-                                    </li>
-                                </ul>
-                                <div class="text-center push">
-                                    <small><a href="javascript:void(0)">Read More..</a></small>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END Ratings -->
-
-                        <!-- Followers -->
-                        <div class="block">
-                            <div class="block-header bg-gray-lighter">
-                                <ul class="block-options">
-                                    <li>
-                                        <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
-                                    </li>
-                                </ul>
-                                <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Followers</h3>
-                            </div>
-                            <div class="block-content">
-                                <ul class="nav-users push">
-                                    <li>
-                                        <a href="base_pages_profile.html">
-                                            <img class="img-avatar" src="{{asset('img/oneui/avatars/avatar11.jpg')}}" alt="">
-                                            <i class="fa fa-circle text-success"></i> Keith Simpson
-                                            <div class="font-w400 text-muted"><small>Web Developer</small></div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="base_pages_profile.html">
-                                            <img class="img-avatar" src="{{asset('img/oneui/avatars/avatar1.jpg')}}" alt="">
-                                            <i class="fa fa-circle text-success"></i> Sara Holland
-                                            <div class="font-w400 text-muted"><small>Web Designer</small></div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="base_pages_profile.html">
-                                            <img class="img-avatar" src="{{asset('img/oneui/avatars/avatar6.jpg')}}" alt="">
-                                            <i class="fa fa-circle text-warning"></i> Linda Moore
-                                            <div class="font-w400 text-muted"><small>Photographer</small></div>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="text-center push">
-                                    <small><a href="javascript:void(0)">Load More..</a></small>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END Followers -->
+                        <!-- END Teams -->
                     </div>
                 </div>
             </div>

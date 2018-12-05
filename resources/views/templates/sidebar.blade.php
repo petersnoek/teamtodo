@@ -12,8 +12,8 @@
                 </button>
                 <!-- Themes functionality initialized in App() -> uiHandleTheme() -->
 
-                <a class="h5 text-white" href="index.html">
-                    <i class="fa fa-circle-o-notch text-primary"></i> <span class="h4 font-w600 sidebar-mini-hide">ne</span>
+                <a class="h5 text-white" href="/dashboard">
+                    <i class="fa fa-circle-o-notch text-primary"></i> <span class="h4 font-w600 sidebar-mini-hide">TeamTodo</span>
                 </a>
             </div>
             <!-- END Side Header -->
