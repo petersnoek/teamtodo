@@ -23,4 +23,12 @@ class ProfileController extends Controller
             return view('auth.login');
         }
     }
+
+    public function save(Request $request) {
+        // $profile = Profile::find($user->profile->id);
+        //
+        // $profile->save();
+
+        return redirect()->back()->with('message', 'Je profiel is succesvol aangepast.');
+    }
 }

@@ -15,9 +15,10 @@
 Route::get('/', 'RouteController@login');
 Route::get('/dashboard', 'RouteController@dashboard');
 
-//User
+//User profiel
 Route::get('/profiel/{id}', 'ProfileController@profile');
 Route::get('/instellingen', 'ProfileController@settings');
+Route::post('/instellingen/save', 'ProfileController@save');
 
 //Auth
 Auth::routes();

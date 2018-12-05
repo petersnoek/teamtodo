@@ -8,12 +8,23 @@
 
     <!-- Page Content -->
     <div class="content content-boxed" style="padding-top: 0;">
-        <form action="base_pages_crypto_settings.html" method="post" onsubmit="return false;">
+
+        <form action="/instellingen/save" method="post">
+
+            {{ csrf_field() }}
+
             <div class="push-30-t push-30 text-center">
                 <h2 class="h1 font-w600 text-black push-5">Profiel aanpassen</h2>
             </div>
             <div class="block block-rounded">
                 <div class="block-content">
+
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{session('message')}}
+                        </div>
+                    @endif
+
                     <!-- User Profile -->
                     <h3 class="page-header text-black">Gebruikersprofiel</h3>
                     <div class="row items-push">
@@ -81,42 +92,32 @@
                     <div class="row items-push">
                         <div class="col-md-3">
                             <p class="text-muted">
-                                Je persoonlijke informatie wordt nooit getoond aan andere gebruikers.
+                                Deze informatie komt op je profiel te staan. Dit is zichtbaar voor iedereen.
                             </p>
                         </div>
                         <div class="col-md-7 col-md-offset-1 form-horizontal">
                             <div class="form-group">
-                                <div class="col-xs-6">
-                                    <label for="crypto-profile-firstname">Firstname</label>
-                                    <input class="form-control input-lg" type="text" id="crypto-profile-firstname" name="crypto-profile-firstname" placeholder="Enter your firstname.." value="John" disabled>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="crypto-profile-lastname">Lastname</label>
-                                    <input class="form-control input-lg" type="text" id="crypto-profile-lastname" name="crypto-profile-lastname" placeholder="Enter your lastname.." value="Parker" disabled>
+                                <div class="col-xs-12">
+                                    <label for="phone">Telefoonnummer</label>
+                                    <input class="form-control input-lg" placeholder="Vul je telefoonnummer in..." value="{{$user->profile->phone}}" type="text" name="phone">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-street-1">Street Address 1</label>
-                                    <input class="form-control input-lg" type="text" id="crypto-profile-street-1" name="crypto-profile-street-1">
+                                    <label for="linkedin">LinkedIn</label>
+                                    <input class="form-control input-lg" placeholder="Vul je LinkedIn url in..." value="{{$user->profile->linkedin}}" type="text" name="linkedin">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-street-2">Street Address 2</label>
-                                    <input class="form-control input-lg" type="text" id="crypto-profile-street-2" name="crypto-profile-street-2">
+                                    <label for="twitter">Twitter</label>
+                                    <input class="form-control input-lg" placeholder="Vul je Twitter url in..." value="{{$user->profile->twitter}}" type="text" name="twitter">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="crypto-profile-city">City</label>
-                                    <input class="form-control input-lg" type="text" id="crypto-profile-city" name="crypto-profile-city">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <label for="crypto-profile-postal">Postal code</label>
-                                    <input class="form-control input-lg" type="text" id="crypto-profile-postal" name="crypto-profile-postal">
+                                    <label for="facebook">Facebook</label>
+                                    <input class="form-control input-lg" placeholder="Vul je Facebook url in..." value="{{$user->profile->facebook}}" type="text" name="facebook">
                                 </div>
                             </div>
                         </div>
